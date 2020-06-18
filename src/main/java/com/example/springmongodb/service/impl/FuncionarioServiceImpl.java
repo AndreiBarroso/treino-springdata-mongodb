@@ -34,7 +34,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         Funcionario chefe =
                 this.funcionarioRepository
                         .findById(funcionario.getChefe().getCodigo())
-                        .orElseThrow(() -> new IllegalArgumentException("Chefe ine xistente"));
+                        .orElseThrow(() -> new IllegalArgumentException("Chefe inexistente"));
 
         funcionario.setChefe(chefe);
 
@@ -46,5 +46,10 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
         return this.funcionarioRepository.obterFuncionarioPorIdade(de, ate);
 
+    }
+
+    @Override
+    public List<Funcionario> obterFuncionarioPorIdade(String nome) {
+        return this.funcionarioRepository.findByNome(nome);
     }
 }

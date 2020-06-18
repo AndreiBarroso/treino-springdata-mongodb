@@ -40,4 +40,10 @@ public class FuncionarioController {
         return this.funcionarioService.obterFuncionarioPorIdade(de, ate);
     }
 
+    @GetMapping("/por-nome")
+    public List<Funcionario> obterFuncionarioPorIdade(@RequestParam("nome") String nome) {
+        return this.funcionarioService.obterFuncionarioPorIdade(nome);
+    }
+
+
 }
