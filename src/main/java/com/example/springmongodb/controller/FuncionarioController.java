@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/funcionario")
+@RequestMapping("/funcionarios")
 public class FuncionarioController {
 
     private FuncionarioService funcionarioService;
@@ -31,7 +31,13 @@ public class FuncionarioController {
 
     @PostMapping
     public Funcionario criar (@RequestBody Funcionario funcionario) {
-            return this.funcionarioService.criar(funcionario);
+        return this.funcionarioService.criar(funcionario);
+    }
+
+
+    @GetMapping("/range")
+    public List<Funcionario> obterFuncionarioPorIdade(@RequestParam("de") Integer de, @RequestParam ("ate") Integer ate) {
+        return this.funcionarioService.obterFuncionarioPorIdade(de, ate);
     }
 
 }
